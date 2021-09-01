@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="editor_type" label="Editor type" language="en" table="x_650610_c_review_question">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>editor_type</element>
+            <help/>
+            <hint/>
+            <label>Editor type</label>
+            <language>en</language>
+            <name>x_650610_c_review_question</name>
+            <plural>Editor types</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-01 13:23:54</sys_created_on>
+            <sys_id>a50a62061b5ef01093964196bc4bcb50</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Editor type</sys_name>
+            <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
+            <sys_update_name>sys_documentation_x_650610_c_review_question_editor_type_en</sys_update_name>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-01 13:23:54</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Question" max_length="40" name="x_650610_c_review_question" type="collection">
+        <element label="Answer" mandatory="true" max_length="200" name="answer" type="string"/>
+        <element choice="1" default="rich_text" label="Editor type" mandatory="true" max_length="40" name="editor_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Rich text" sequence="100" value="rich_text"/>
+                <element inactive_on_update="false" label="Plain text" sequence="200" value="plain_text"/>
+            </choice>
+        </element>
+        <element label="Order" max_length="40" name="order" type="integer"/>
+        <element label="Question" max_length="8000" name="question" type="html"/>
+        <element label="Question Bank" max_length="32" name="question_bank" reference="x_650610_c_review_question_bank" reference_floats="true" type="reference"/>
+        <element label="Question (Text)" max_length="300" name="question_text" type="string"/>
+        <element choice="1" default="plain" label="Type" mandatory="true" max_length="40" name="type" read_only="true" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Plain" sequence="10" value="plain"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="question_bank"/>
+        </index>
+    </element>
+</database>
