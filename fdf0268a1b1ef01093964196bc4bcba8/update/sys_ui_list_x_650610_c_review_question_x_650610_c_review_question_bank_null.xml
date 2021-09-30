@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="x_650610_c_review_question_bank" relationship="" sys_domain="global" table="x_650610_c_review_question" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>question_text</element>
+            <list_id display_value="x_650610_c_review_question" element="NULL" name="x_650610_c_review_question" parent="x_650610_c_review_question_bank" relationship="NULL" sys_domain="global" view="Default view">46ae04aa1b56301093964196bc4bcbc5</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-02 15:22:02</sys_created_on>
+            <sys_id>c2ae04aa1b56301093964196bc4bcbc7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-02 15:22:02</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>answer</element>
+            <list_id display_value="x_650610_c_review_question" element="NULL" name="x_650610_c_review_question" parent="x_650610_c_review_question_bank" relationship="NULL" sys_domain="global" view="Default view">46ae04aa1b56301093964196bc4bcbc5</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-02 15:22:02</sys_created_on>
+            <sys_id>caae04aa1b56301093964196bc4bcbc7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-02 15:22:02</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>type</element>
+            <list_id display_value="x_650610_c_review_question" element="NULL" name="x_650610_c_review_question" parent="x_650610_c_review_question_bank" relationship="NULL" sys_domain="global" view="Default view">46ae04aa1b56301093964196bc4bcbc5</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-02 15:22:02</sys_created_on>
+            <sys_id>4eae04aa1b56301093964196bc4bcbc7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-02 15:22:02</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>editor_type</element>
+            <list_id display_value="x_650610_c_review_question" element="NULL" name="x_650610_c_review_question" parent="x_650610_c_review_question_bank" relationship="NULL" sys_domain="global" view="Default view">46ae04aa1b56301093964196bc4bcbc5</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-02 15:22:02</sys_created_on>
+            <sys_id>ceae04aa1b56301093964196bc4bcbc7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-02 15:22:02</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>order</element>
+            <list_id display_value="x_650610_c_review_question" element="NULL" name="x_650610_c_review_question" parent="x_650610_c_review_question_bank" relationship="NULL" sys_domain="global" view="Default view">46ae04aa1b56301093964196bc4bcbc5</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-02 15:22:02</sys_created_on>
+            <sys_id>42ae04aa1b56301093964196bc4bcbc8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-02 15:22:02</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>x_650610_c_review_question</name>
+            <parent>x_650610_c_review_question_bank</parent>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>allen.linatoc</sys_created_by>
+            <sys_created_on>2021-09-02 15:22:02</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>46ae04aa1b56301093964196bc4bcbc5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_650610_c_review_question</sys_name>
+            <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
+            <sys_update_name>sys_ui_list_x_650610_c_review_question_x_650610_c_review_question_bank_null</sys_update_name>
+            <sys_updated_by>allen.linatoc</sys_updated_by>
+            <sys_updated_on>2021-09-02 15:22:02</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

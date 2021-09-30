@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Question" max_length="40" name="x_650610_c_review_question" type="collection">
+    <element label="Question" max_length="40" name="x_650610_c_review_question" sizeclass="6" type="collection">
         <element label="Answer" mandatory="true" max_length="200" name="answer" type="string"/>
         <element choice="1" default="rich_text" label="Editor type" mandatory="true" max_length="40" name="editor_type" type="string">
             <choice>

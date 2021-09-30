@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="2">83a8fa421b9ef01093964196bc4bcb18</sp_column>
+        <sp_widget display_value="Cool Review - Question Bank Player">343f27121b16301093964196bc4bcba7</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>allen.linatoc</sys_created_by>
+        <sys_created_on>2021-09-02 15:47:13</sys_created_on>
+        <sys_id>3a6494ee1b56301093964196bc4bcb78</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
+        <sys_update_name>sp_instance_3a6494ee1b56301093964196bc4bcb78</sys_update_name>
+        <sys_updated_by>allen.linatoc</sys_updated_by>
+        <sys_updated_on>2021-09-02 15:47:13</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=3a6494ee1b56301093964196bc4bcb78"/>
+</record_update>
