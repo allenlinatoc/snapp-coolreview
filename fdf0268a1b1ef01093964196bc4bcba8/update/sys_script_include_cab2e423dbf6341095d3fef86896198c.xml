@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_650610_c_review.QuestionBank</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>QuestionBank</name>
+        <script><![CDATA[var QuestionBank = Class.create();
+QuestionBank.prototype = {
+    initialize: function() {
+    },
+
+    type: 'QuestionBank'
+};
+
+(function(self) {
+	
+	self.TABLENAME = "x_650610_c_review_question_bank";
+	self.ObjectFields = [ "name", "description", "order" ];
+	
+	
+	self.Glide = function(question_bank_id) {
+		var gr = new GlideRecord(self.TABLENAME);
+		if (!gr.get(question_bank_id)) {
+			return false;
+		}
+		
+		return gr;
+	};
+	
+	self.GetObject = function(question_bank_id) {
+		var gr_bank = question_bank_id;
+		if (typeof question_bank_id == "string") {
+			gr_bank = self.Glide(question_bank_id);
+		}
+		if (typeof gr_bank == "object" && !Array.isArray(gr_bank)) {
+			var result = {};
+			for (var i in self.ObjectFields) {
+				var field = self.ObjectFields[i];
+				result[field] = {
+					value: String(gr_bank[field]),
+					display_value: gr_bank[field].getDisplayValue()
+				};
+			}
+
+			return result;
+		}
+		
+		
+		return false;
+	};
+	
+	
+})(QuestionBank);]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>allen.linatoc</sys_created_by>
+        <sys_created_on>2021-09-30 15:57:45</sys_created_on>
+        <sys_id>cab2e423dbf6341095d3fef86896198c</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>QuestionBank</sys_name>
+        <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
+        <sys_update_name>sys_script_include_cab2e423dbf6341095d3fef86896198c</sys_update_name>
+        <sys_updated_by>allen.linatoc</sys_updated_by>
+        <sys_updated_on>2021-09-30 16:29:46</sys_updated_on>
+    </sys_script_include>
+</record_update>

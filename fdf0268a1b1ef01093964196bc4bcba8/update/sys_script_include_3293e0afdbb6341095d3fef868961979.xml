@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_650610_c_review.Question</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Question</name>
+        <script><![CDATA[var Question = Class.create();
+Question.prototype = {
+    initialize: function() {
+    },
+
+    type: 'Question'
+};
+
+
+(function(self) {
+	
+	self.TABLENAME = "x_650610_c_review_question";
+	self.ObjectFields = [
+		"editor_type", "type", "order", "question", "answer"
+	];
+	
+	self.GlideFromBank = function(question_bank, order_by, sort_order) {
+		var gr_bank = question_bank;
+		if (typeof question_bank == "string") {
+			gr_bank = new GlideRecord(QuestionBank.TABLENAME);
+			if (!gr_bank.get(question_bank)) {
+				gr_bank = false;
+			}
+		}
+
+		if (typeof gr_bank == "object" && typeof gr_bank.getUniqueValue) {
+			var gr_questions = new GlideRecord(self.TABLENAME);
+			gr_questions.addQuery("question_bank", gr_bank.getUniqueValue());
+			if (order_by) {
+				if (sort_order && sort_order.toUpperCase().indexOf('DESC') >= 0) {
+					gr_questions.orderByDesc(order_by);
+				} else {
+					gr_questions.orderBy(order_by);
+				}
+			}
+			gr_questions.query();
+			if (gr_questions.getRowCount() > 0) {
+				return gr_questions;
+			}
+		}
+		
+		return false;
+	};
+	
+	
+	self.Glide = function(question_id) {
+		var gr_question = new GlideRecord(self.TABLENAME);
+		if (!gr_question.get(question_id)) {
+			return false;
+		}
+		
+		return true;
+	};
+	
+	
+	self.GetObject = function(question_id) {
+		var gr_question = question_id;
+		if (typeof question_id == "string") {
+			gr_question = self.Glide(question_id);
+		}
+		if (typeof gr_question == "object" && !Array.isArray(gr_question)) {
+			var result = {
+				// object payload here
+			};
+			for (var i in self.ObjectFields) {
+				var field = self.ObjectFields[i];
+				result[field] = {
+					display_value: gr_question[field].getDisplayValue().trim(),
+					value: String(gr_question[field]).trim()
+				};
+			}
+			
+			return result;
+		}
+		
+		return false;
+	};
+	
+	
+	self.GetFromBank = function(question_bank, order_by, sort_order) {
+		var result = [];
+		var gr_question = self.GlideFromBank(question_bank, order_by, sort_order);
+		if (!gr_question) {
+			return false;
+		}
+		
+		while (gr_question.next()) {
+			var obj = self.GetObject(gr_question);
+			result.push(obj);
+		}
+		
+		return result;
+	};
+
+	
+})(Question);]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>allen.linatoc</sys_created_by>
+        <sys_created_on>2021-09-30 16:03:16</sys_created_on>
+        <sys_id>3293e0afdbb6341095d3fef868961979</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Question</sys_name>
+        <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
+        <sys_update_name>sys_script_include_3293e0afdbb6341095d3fef868961979</sys_update_name>
+        <sys_updated_by>allen.linatoc</sys_updated_by>
+        <sys_updated_on>2021-10-06 15:38:49</sys_updated_on>
+    </sys_script_include>
+</record_update>

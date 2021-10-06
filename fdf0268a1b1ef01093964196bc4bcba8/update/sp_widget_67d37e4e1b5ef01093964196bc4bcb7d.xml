@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[api.controller=function() {
+        <client_script><![CDATA[api.controller=function($rootScope) {
   /* widget controller */
   var c = this;
+	
+	c.selected_bank_id = false;
+	
+	c.fn = {
+		pickQuestionBank: function(bank_id) {
+			if (c.selected_bank_id == bank_id)
+				return;
+			
+			c.selected_bank_id = bank_id;
+			$rootScope.$broadcast("coolreview.bank.picked", bank_id)
+		}
+	};
+	
 };]]></client_script>
         <controller_as>c</controller_as>
         <css>tr td a {
@@ -20,6 +33,11 @@ tr, tr td {
 
 tr td a:hover {
   background-color: #d9edff;
+}
+
+tr td a.selected {
+  background-color: #d9daff;
+  font-weight: bold;
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -65,14 +83,14 @@ tr td a:hover {
         <sys_created_by>allen.linatoc</sys_created_by>
         <sys_created_on>2021-09-01 14:21:17</sys_created_on>
         <sys_id>67d37e4e1b5ef01093964196bc4bcb7d</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>Cool Review - Question Bank Selector</sys_name>
         <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
         <sys_update_name>sp_widget_67d37e4e1b5ef01093964196bc4bcb7d</sys_update_name>
         <sys_updated_by>allen.linatoc</sys_updated_by>
-        <sys_updated_on>2021-09-03 12:24:29</sys_updated_on>
+        <sys_updated_on>2021-09-30 15:42:09</sys_updated_on>
         <template><![CDATA[<div class="col-xs-12">
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -83,7 +101,7 @@ tr td a:hover {
         <tbody>
         	<tr ng-repeat="row in c.data.rows">
             <td>
-              <a href="javascript:;" data-sys-id="{{ row.sys_id }}" ng-click="">
+              <a href="javascript:;" data-sys-id="{{ row.sys_id }}" ng-click="c.fn.pickQuestionBank(row.sys_id)" ng-class="{ selected: c.selected_bank_id == row.sys_id }">
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 {{ row.name }}
               </a>

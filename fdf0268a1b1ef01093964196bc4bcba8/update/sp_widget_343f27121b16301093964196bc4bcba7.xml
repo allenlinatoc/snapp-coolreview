@@ -6,9 +6,72 @@
   var c = this;
 	
 	
-	$scope.$on("questionBankPicked", function(event, data) {
-		alert(JSON.stringify(data, null, 2));
+	$scope.$on("coolreview.bank.picked", function(event, data) {
+		c.fn.setMode("PREVIEW");
+		
+		var bank_id = String(data).trim();
+		if (bank_id && c.data.selected_bank != bank_id) {
+			c.fn.loadBank(bank_id, function() {
+				//alert(JSON.stringify(c.data, null, 2));
+			});
+		}
 	});
+	
+	
+	//
+	// Functions
+	//
+	c.fn = {
+		
+		checkMode: function(mode) {
+			return c.data.mode == String(mode).toUpperCase();
+		},
+		
+		clearQuestionData: function() {
+			c.data.question_bank = false;
+			c.data.questions = false;
+		},
+		
+		isPreviewMode: function() { return this.checkMode('PREVIEW') },
+		isPlayMode: function() { return this.checkMode('PLAY') },
+		
+		loadBank: function(bank_id, callback) {
+			bank_id = bank_id || c.data.selected_bank;
+			if (bank_id && bank_id != c.data.selected_bank) {
+				c.data.selected_bank = bank_id;
+			}
+			
+			this.clearQuestionData();
+			
+			c.fn.postData(function($r) {
+				c.data = $r.data;
+				callback($r.data);
+			});
+		},
+		
+		play: function() {
+			
+		},
+		
+		postData: function(callback) {
+			c.server.get(c.data).then(function($r) {
+				callback($r);
+			});
+		},
+			
+		setMode: function(mode) {
+			if (!mode)
+				return;
+			
+			c.data.mode = String(mode).toUpperCase();
+		}
+		
+		
+	};
+	
+	
+	// Expose functions to $scope
+	$scope.fn = c.fn;
 	
 	
 };]]></client_script>
@@ -30,11 +93,50 @@
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
+	var handleInput = function (input, data) {
+		for (var key in input) {
+			data[key] = input[key];
+		}
+	};
+	
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
 	
-	data.selectedBank = false;
-
+	//try {
+	
+	data.mode = "PREVIEW";
+	data.selected_bank = false;
+	data.question_bank = false;
+	data.questions = false;
+	
+	// Play data
+	data.play = {
+		question: false,
+		correct: false,
+		taken: false,
+		percentage: false
+	};
+		
+	
+	// If there's an update
+	if (input != null) {
+		handleInput(input, data);
+		
+		if (data.mode == "PREVIEW") {
+			data.name = "Allen";
+			if (data.selected_bank) {
+				data.question_bank = QuestionBank.GetObject(data.selected_bank);
+				data.questions = Question.GetFromBank(data.selected_bank, 'order');
+			}
+		}
+		
+	}
+	
+	
+	/*
+	} catch (ex) {
+		gs.addInfoMessage("## " + JSON.stringify(ex, null, 2));
+	}*/
 	
 })();]]></script>
         <servicenow>false</servicenow>
@@ -42,18 +144,67 @@
         <sys_created_by>allen.linatoc</sys_created_by>
         <sys_created_on>2021-09-02 13:06:12</sys_created_on>
         <sys_id>343f27121b16301093964196bc4bcba7</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>91</sys_mod_count>
         <sys_name>Cool Review - Question Bank Player</sys_name>
         <sys_package display_value="Cool Review" source="x_650610_c_review">fdf0268a1b1ef01093964196bc4bcba8</sys_package>
         <sys_policy/>
         <sys_scope display_value="Cool Review">fdf0268a1b1ef01093964196bc4bcba8</sys_scope>
         <sys_update_name>sp_widget_343f27121b16301093964196bc4bcba7</sys_update_name>
         <sys_updated_by>allen.linatoc</sys_updated_by>
-        <sys_updated_on>2021-09-02 15:57:55</sys_updated_on>
-        <template><![CDATA[<div>
-  <p ng-if="!c.data.selectedBank" align="center">
-    <h3>Pick a Question bank to get started.</h3>
+        <sys_updated_on>2021-10-06 16:01:32</sys_updated_on>
+        <template><![CDATA[<div ng-if="!c.data.selected_bank">
+  <p align="center">
+    <h2>Pick a Question bank to get started.</h2>
   </p>
+</div>
+
+
+<div ng-if="!!c.data.selected_bank && c.data.question_bank">
+  
+  <div align="left">
+    <h2>{{ c.data.question_bank.name.display_value }}</h2>
+  	<h4>{{ c.data.question_bank.description.display_value }}</h4>
+  </div>
+	
+  <div class="controls">
+    <button class="btn btn-primary" ng-click="fn.">
+      <span class="glyphicon glyphicon-play"></span>&nbsp;Play
+    </button>
+    &nbsp;
+    <button class="btn btn-warning" ng-click="fn.loadBank()">
+      <span class="glyphicon glyphicon-refresh"></span>&nbsp;Refresh
+    </button>
+  </div>
+  
+	<hr/>
+
+	<div ng-if="fn.isPreviewMode()">
+    <h3>Questions</h3>
+		<table class="table table-responsive table-hover">
+			<thead>
+      	<tr>
+        	<th>Answer</th>
+        	<th>Question</th>
+          <th>Type</th>
+          <th>Order</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<tr ng-repeat="question in c.data.questions">
+          <td>{{ question.answer.display_value }}</td>
+          <td ng-bind-html="question.question.display_value"></td>
+          <td>{{ question.type.display_value }}</td>
+          <td>{{ question.order.display_value }}</td>
+        </tr>
+      </tbody>
+	  </table>
+	</div>
+
+
+	<div ng-if="c.data.mode == 'PLAY'">
+    <h3>Play</h3>
+  </div>
+
 </div>]]></template>
     </sp_widget>
 </record_update>
